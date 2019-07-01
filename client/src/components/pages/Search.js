@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Button, Form, FormGroup, Label, Col, Input } from 'reactstrap';
 import BookList from '../BooksList'
 import axios from 'axios';
+// import config from '../../config/keys'
+
 
 
 class Search extends Component {
@@ -11,11 +13,14 @@ class Search extends Component {
     }
 
 
+
     handleBooks = event => {
         event.preventDefault();
-        let searchTerm = "";
+        let searchTerm = this.state.searchTerm
+        // var mykey = config.MY_KEY;
         // only need this.searchterms from state
-        axios.get( "https://www.googleapis.com/books/q=" + { searchTerm } + "&key=AIzaSyCIVE37lHWdjWbtslfkQWYRvXu46N6CEws" )
+        axios.get( "https://www.googleapis.com/books/v1/volumes?q=" + searchTerm + ""
+        )
             .then( response => {
                 console.log( response );
 
