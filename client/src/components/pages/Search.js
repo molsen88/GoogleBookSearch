@@ -11,29 +11,22 @@ class Search extends Component {
     }
 
 
-    handleBooks = () => {
+    handleBooks = event => {
+        event.preventDefault();
+        let searchTerm = "";
         // only need this.searchterms from state
-        axios.get( 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyCIVE37lHWdjWbtslfkQWYRvXu46N6CEws' )
-            .query( { q: this.searchTerm } )
-            .then( res => {
-                console.log( res );
+        axios.get( "https://www.googleapis.com/books/q=" + { searchTerm } + "&key=AIzaSyCIVE37lHWdjWbtslfkQWYRvXu46N6CEws" )
+            .then( response => {
+                console.log( response );
 
                 this.setState( {
-                    books: res.data
+                    // books: [...data.body.items]
                 } )
             } )
     }
 
     handleSearch = ( event ) => {
-        //only need this.searchterms from state
-        // axios.get( '/api/books' )
-        //     .then( res => {
-        //         console.log( res.data[0].authors );
 
-        //         this.setState( {
-        //             books: res.data
-        //         } )
-        //     } )
         console.log( event.target.value )
         this.setState( { searchTerm: event.target.value } )
     }
@@ -41,7 +34,7 @@ class Search extends Component {
     render() {
         return (
             <Container>
-                <Form>
+                <Form onSubmit={this.handleBooks}>
                     <FormGroup row>
                         <Label for="searchBar" sm={2}>Title of Book</Label>
                         <Col sm={10}>
@@ -52,10 +45,7 @@ class Search extends Component {
                         type="submit"
                         color="dark"
                         stye={{ marginBottom: '2rem' }}
-                        onSubmit={() => {
-                            this.handleSearch()
-                            // this.handleBooks();
-                        }}
+
                     >
                         Search
                 </Button>
