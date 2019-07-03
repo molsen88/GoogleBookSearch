@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import AppNavbar from "./components/AppNavbar"
 import { Container } from 'reactstrap';
+import BookCard from './components/BookCard/Bookcard';
 // import BooksList from './components/BooksList'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           </div>
         </BrowserRouter>
       </div>
+      <BookCard />
     </Container >
   );
 }

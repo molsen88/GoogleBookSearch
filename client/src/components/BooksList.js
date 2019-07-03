@@ -1,24 +1,37 @@
 import React from 'react';
-import { Container, ListGroup, ListGroupItem } from 'reactstrap';
+// import { Container, ListGroup, ListGroupItem } from 'reactstrap';
+import BookCard from '../components/BookCard/Bookcard'
+const BookList = ( props ) => {
 
-export default class BookList extends React.Component {
 
-    handleChange = () => {
-        var author = this.props.res.data.author;
-        this.props.onBookList( author );
-    }
-    render() {
-        // console.log( this.props );
-        return (
-            <Container>
-                <h3>Results: </h3>
-                <ListGroup>
-                    <ListGroupItem onChange={this.handleChange}></ListGroupItem>
-                    <ListGroupItem>Morbi leo risus</ListGroupItem>
+
+    // console.log( this.props );
+    return (
+        <div className="list">
+            {/* <Container> */}
+            <h3>Results: </h3>
+            {/* <ListGroup>
+                    <ListGroupItem > */}
+            {
+                props.books.map( ( book, i ) => {
+                    return <BookCard
+                        key={i}
+                        image={book.volumeInfo.imageLinks.thumbnail}
+                        title={book.volumeInfo.title}
+                        author={book.volumeInfo.authors} />
+
+                } )
+            }
+            {/* </ListGroupItem> */}
+            {/* <ListGroupItem>Morbi leo risus</ListGroupItem>
                     <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-                    <ListGroupItem>Vestibulum at eros</ListGroupItem>
-                </ListGroup>
-            </Container>
-        );
-    }
+                    <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
+            {/* </ListGroup> */}
+            {/* </Container> */}
+        </div>
+
+    );
 }
+
+export default BookList
+

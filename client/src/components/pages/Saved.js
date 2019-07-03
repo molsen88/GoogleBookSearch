@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem } from 'reactstrap';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
 class Saved extends Component {
 
-    state = {
-        books: []
-    }
-    componentWillMount() {
-        axios.get( '/api/books' )
-            .then( res => {
-                console.log( res.data );
+    // state = {
+    //     books: []
+    // }
+    // componentWillMount() {
+    //     axios.get( '/api/books' )
+    //         .then( res => {
+    //             console.log( res.data );
 
-                this.setState( {
-                    books: res.data
-                } )
-            } )
-    }
+    //             this.setState( {
+    //                 books: res.data
+    //             } )
+    //         } )
+    // }
 
     render() {
         return (

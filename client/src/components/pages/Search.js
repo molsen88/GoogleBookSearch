@@ -25,8 +25,10 @@ class Search extends Component {
                 console.log( response );
 
                 this.setState( {
-                    // books: [...data.body.items]
+                    books: [...response.data.items]
+
                 } )
+                console.log( this.state.books )
             } )
     }
 
@@ -50,14 +52,12 @@ class Search extends Component {
                         type="submit"
                         color="dark"
                         stye={{ marginBottom: '2rem' }}
-
-                    >
-                        Search
+                    >Search
                 </Button>
                 </Form>
                 <br />
                 <div>
-                    <BookList onBookList={this.handleSearch} />
+                    <BookList books={this.state.books} />
                 </div>
             </Container>
         )
