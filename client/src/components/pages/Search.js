@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, Form, FormGroup, Label, Col, Input } from 'reactstrap';
+import { Container, Button, Form, FormGroup, Col, Input } from 'reactstrap';
 import BookList from '../BooksList'
 import axios from 'axios';
 // import config from '../../config/keys'
@@ -43,7 +43,6 @@ class Search extends Component {
             <Container>
                 <Form onSubmit={this.handleBooks}>
                     <FormGroup row>
-                        <Label for="searchBar" sm={2}>Title of Book</Label>
                         <Col sm={10}>
                             <Input onChange={this.handleSearch} type="text" name="search" id="searchBar" placeholder="Enter book name!" />
                         </Col>
