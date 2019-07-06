@@ -1,10 +1,11 @@
 const express = require( 'express' )
 const mongoose = require( 'mongoose' )
 const bodyParser = require( 'body-parser' )
-
 const Books = require( './routes/api/books' )
 
-const PORT = process.env.PORT || 3000;
+const PORT = ( process.env.PORT || 3000, function () {
+    console.log( "Express server listening on port %d in %s mode", this.address().port, app.settings.env );
+} )
 const app = express();
 app.use( express.static( "public" ) );
 
